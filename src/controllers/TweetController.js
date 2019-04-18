@@ -8,8 +8,9 @@ class TweetController {
   }
 
   async store(req, res) {
-    const tweet = Tweet.create(req.body);
+    const tweet = await Tweet.create(req.body);
 
+    console.log(req.body);
     req.io.emit("tweet", tweet);
 
     return res.json(tweet);
